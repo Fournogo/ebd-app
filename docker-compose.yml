@@ -1,0 +1,25 @@
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+
+  web:
+    build: .
+    command: gunicorn app:app --bind 0.0.0.0:5005 --workers 2 --timeout 120
+    ports:
+      - "5005:5005"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379
+    restart: unless-stopped
+
+  worker:
+    build: .
+    command: rq worker ebd_reports
+    working_dir: /app
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379
+    restart: unless-stopped

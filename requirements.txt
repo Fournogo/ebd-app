@@ -1,0 +1,15 @@
+flask
+gunicorn
+rq
+redis
+papermill
+nbformat
+nbconvert
+weasyprint
+numpy
+pandas
+matplotlib
+scipy
+scikit-learn
+jupyter-client
+ipykernel
