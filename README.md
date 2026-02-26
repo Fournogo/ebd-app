@@ -8,6 +8,9 @@ To restart the container do: docker compose up -d
 
 To rebuild the front end, cd into the "front-end" directory and do "npm run build"
 
+NOTE: On a new install, you must create a .env file and fill it with: VITE_MAPTILER_API_KEY=apikeyhere
+This is due to the API key not being included in the github repo.
+
 This app uses a Python Flask architecture to handle web requests. 
 App.py serves up front end files over http and allows React to handle URL routing.
 The "/generate-report" route is in "routes.py". This is the function that will be called when the user presses the generate report button.
